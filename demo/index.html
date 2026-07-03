@@ -3,55 +3,44 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>grapesjs-devtools — demo</title>
-    <style>
-      html,
-      body {
-        margin: 0;
-        height: 100%;
-      }
-      #gjs {
-        border: none;
-      }
-    </style>
+    <title>grapesjs-devtools — live demo</title>
+    <link rel="stylesheet" href="./demo.css" />
   </head>
   <body>
-    <div id="gjs">
-      <div style="padding: 40px; font-family: sans-serif">
-        <h1 class="title">Hello devtools</h1>
-        <p>
-          Press <kbd>Ctrl+Shift+D</kbd> (<kbd>⌘+Shift+D</kbd> on Mac) to toggle
-          the developer panel. Select
-          elements, watch the event log, or run <code>editor.getHtml()</code> in
-          the console.
-        </p>
-        <a href="#" class="link">A link</a>
+    <header class="demo-bar">
+      <div class="demo-brand">
+        <span class="demo-brand-mark">GJS</span>
+        <span class="demo-brand-name">grapesjs-devtools</span>
       </div>
-    </div>
 
-    <!-- Resolved from node_modules by Vite — works offline, no CDN. -->
-    <script type="module">
-      import grapesjs from 'grapesjs';
-      import 'grapesjs/dist/css/grapes.min.css';
-      import devtools from '../src/index.ts';
+      <nav class="demo-switch" aria-label="Editor environment">
+        <a
+          class="demo-switch-btn"
+          data-mode="webpage"
+          href="?mode=webpage"
+          role="button"
+        >
+          Webpage preset
+        </a>
+        <a
+          class="demo-switch-btn"
+          data-mode="studio"
+          href="?mode=studio"
+          role="button"
+        >
+          Studio
+        </a>
+      </nav>
 
-      const editor = grapesjs.init({
-        container: '#gjs',
-        height: '100vh',
-        fromElement: true,
-        storageManager: false,
-        plugins: [
-          (ed) =>
-            devtools(ed, {
-              enabled: true,
-              position: 'right',
-              theme: 'dark',
-            }),
-        ],
-      });
+      <p class="demo-hint">
+        Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>
+        <span class="demo-hint-mac">(<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>)</span>
+        for devtools
+      </p>
+    </header>
 
-      // Expose for manual poking.
-      window.editor = editor;
-    </script>
+    <main id="editor" class="demo-editor"></main>
+
+    <script type="module" src="./main.ts"></script>
   </body>
 </html>

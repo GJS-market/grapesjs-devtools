@@ -6,12 +6,22 @@
 **Built by [gjs.market](https://gjs.market) for the whole GrapesJS community. ♥**
 Need custom GrapesJS work? → **[gjs.market/services](https://gjs.market/services)**
 
+🧩 **Plugin page: [gjs.market/products/grapesjs-devtools](https://gjs.market/products/grapesjs-devtools-debugging-developer-toolkit)**
 📖 **Full documentation: [DOCS.md](./DOCS.md)**
 
 A dockable, toggleable panel that lets you inspect the component tree, edit
 attributes/traits live, watch the editor's event firehose, evaluate JavaScript
 against the running `editor`, and even ask an AI for GrapesJS code examples —
 without leaving the canvas.
+
+## Live demo
+
+[![grapesjs-devtools live demo](https://gjs.market/_next/image?url=https%3A%2F%2Fapi.gjs.market%2Fstorage%2F959%2F%D0%97%D0%BD%D1%96%D0%BC%D0%BE%D0%BA-%D0%B5%D0%BA%D1%80%D0%B0%D0%BD%D0%B0-2026-07-03-%D0%BE-12.29.35.png&w=3840&q=75)](https://sunny-strudel-d54292.netlify.app/)
+
+**▶ [Open the live demo](https://sunny-strudel-d54292.netlify.app/)** — switch between the
+standard **Webpage preset** and **GrapesJS Studio** with the toggle at the top, then press
+<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> (<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd> on macOS)
+to open the devtools panel.
 
 All feature modules are implemented:
 
@@ -230,17 +240,21 @@ class MyModule implements DevtoolsModule {
 
 ```bash
 npm install
-npm run dev        # starts Vite and opens the sandbox at http://localhost:5173
+npm run dev        # starts Vite and opens the demo at http://localhost:5173
 npm run typecheck  # tsc --strict
 npm test           # vitest (pure-util unit tests)
-npm run build      # ESM + UMD + d.ts into dist/
+npm run build      # ESM + UMD + d.ts into dist/ (the published package)
+npm run build:site # builds the demo site into dist-site/ (what Netlify publishes)
 ```
 
-`npm run dev` serves the root `index.html` sandbox — a full GrapesJS editor with
-the plugin loaded from source (GrapesJS is resolved from `node_modules`, no CDN).
-Open **http://localhost:5173** and press `Ctrl+Shift+D`. If you see a 404 at the
-root, make sure you're on the latest version — the sandbox entry lives at the
-repo root, not under `demo/`.
+`npm run dev` serves the `demo/` site — the plugin loaded from source into a full
+GrapesJS editor, with a **top switcher** between the standard **Webpage preset**
+and **GrapesJS Studio** (GrapesJS is resolved from `node_modules`, no CDN). Open
+**http://localhost:5173** and press `Ctrl+Shift+D`.
+
+> The preset switcher lives only in the demo (`demo/`), which is **not** part of
+> the published npm package (`files` ships `dist`, `src`, `README.md`). Installing
+> the plugin into your own project gives you just the devtools panel — no switcher.
 
 ## Support & services
 
@@ -253,9 +267,11 @@ help wiring this into your product?
 
 → **[gjs.market/services](https://gjs.market/services)**
 
+- 🧩 Plugin page: [gjs.market/products/grapesjs-devtools](https://gjs.market/products/grapesjs-devtools-debugging-developer-toolkit)
+- ▶ Live demo: [sunny-strudel-d54292.netlify.app](https://sunny-strudel-d54292.netlify.app/)
 - 📖 Full documentation: [DOCS.md](./DOCS.md)
 - 🐛 Issues / contributions: [GitHub](https://github.com/GJS-market/grapesjs-devtools)
-- 🧩 More GrapesJS plugins & tools: [gjs.market](https://gjs.market)
+- 🛠️ More GrapesJS plugins & tools: [gjs.market](https://gjs.market)
 
 ## License
 

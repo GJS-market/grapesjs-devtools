@@ -317,15 +317,20 @@ variables (`--gjs-dt-*`) so your module works in dark and light.
 
 ```bash
 npm install
-npm run dev        # Vite dev server + sandbox at http://localhost:5173
+npm run dev        # Vite dev server + demo at http://localhost:5173
 npm run typecheck  # tsc --strict
 npm test           # vitest (pure-util unit tests)
-npm run build      # ESM + UMD + d.ts into dist/
+npm run build      # ESM + UMD + d.ts into dist/ (the published package)
+npm run build:site # demo site into dist-site/ (what Netlify publishes)
 ```
 
-`npm run dev` serves the root `index.html` sandbox — a full GrapesJS editor with
-the plugin loaded from source (GrapesJS from `node_modules`, no CDN). Press
-`Ctrl+Shift+D` (`⌘+Shift+D` on macOS).
+`npm run dev` serves the `demo/` site — a full GrapesJS editor with the plugin
+loaded from source (GrapesJS from `node_modules`, no CDN) and a top switcher
+between the **Webpage preset** and **GrapesJS Studio**. Press `Ctrl+Shift+D`
+(`⌘+Shift+D` on macOS).
+
+The switcher is demo-only: `demo/` is excluded from the published npm package, so
+installing the plugin gives you just the devtools panel.
 
 ---
 

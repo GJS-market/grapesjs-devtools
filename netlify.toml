@@ -1,0 +1,9 @@
+# Netlify builds and publishes the demo site (the toggle demo in `demo/`),
+# NOT the library bundle in `dist/`. Set VITE_STUDIO_LICENSE_KEY in
+# Site settings → Environment variables so Studio works on the public domain.
+[build]
+  command = "npm run build:site"
+  publish = "dist-site"
+
+[build.environment]
+  NODE_VERSION = "18"

@@ -1,0 +1,160 @@
+:root {
+  --demo-bar-h: 52px;
+  --color-bg: oklch(18% 0.02 265);
+  --color-bar: oklch(22% 0.03 265);
+  --color-border: oklch(30% 0.03 265);
+  --color-text: oklch(96% 0.01 265);
+  --color-muted: oklch(70% 0.02 265);
+  --color-accent: oklch(70% 0.17 250);
+  --color-accent-ink: oklch(20% 0.04 265);
+
+  --radius-pill: 999px;
+  --radius-md: 8px;
+  --duration-fast: 140ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --font-ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-ui);
+  background: var(--color-bg);
+  color: var(--color-text);
+  overflow: hidden;
+}
+
+/* ---- Top bar ------------------------------------------------------------ */
+.demo-bar {
+  flex: 0 0 var(--demo-bar-h);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 16px;
+  background: var(--color-bar);
+  border-bottom: 1px solid var(--color-border);
+  user-select: none;
+}
+
+.demo-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.demo-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.demo-brand-name {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---- Segmented toggle --------------------------------------------------- */
+.demo-switch {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  background: oklch(28% 0.03 265);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+}
+
+.demo-switch-btn {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-muted);
+  background: transparent;
+  transition:
+    color var(--duration-fast) var(--ease-out-expo),
+    background var(--duration-fast) var(--ease-out-expo);
+}
+
+.demo-switch-btn:hover {
+  color: var(--color-text);
+}
+
+.demo-switch-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.demo-switch-btn[aria-current="true"] {
+  color: var(--color-accent-ink);
+  background: var(--color-accent);
+}
+
+/* ---- Hint --------------------------------------------------------------- */
+.demo-hint {
+  margin: 0 0 0 auto;
+  font-size: 12px;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.demo-hint kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  padding: 1px 5px;
+  border-radius: 5px;
+  border: 1px solid var(--color-border);
+  background: oklch(26% 0.03 265);
+}
+
+/* ---- Editor surface ----------------------------------------------------- */
+.demo-editor {
+  flex: 1 1 auto;
+  min-height: 0;
+  position: relative;
+}
+
+/* GrapesJS fills its host; Studio mounts its own React app inside. */
+.demo-editor .gjs-editor,
+.demo-editor > * {
+  height: 100%;
+}
+
+@media (max-width: 860px) {
+  .demo-hint {
+    display: none;
+  }
+  .demo-bar {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .demo-brand-name {
+    display: none;
+  }
+}

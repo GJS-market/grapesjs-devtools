@@ -1,6 +1,10 @@
 node_modules
 dist
+dist-site
 *.log
 .DS_Store
 .vite
+.env
+.env.*
+!.env.example
 coverage

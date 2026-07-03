@@ -5,6 +5,8 @@ import { PLUGIN_VERSION } from '../../version';
 
 const GJS_MARKET = 'https://gjs.market';
 const GJS_SERVICES = 'https://gjs.market/services';
+const GJS_PRODUCT =
+  'https://gjs.market/products/grapesjs-devtools-debugging-developer-toolkit';
 const REPO = 'https://github.com/GJS-market/grapesjs-devtools';
 
 /**
@@ -22,14 +24,7 @@ export class AboutModule implements DevtoolsModule {
   }
 
   mount(el: HTMLElement): void {
-    // GrapesJS exposes `version` on its default module export (the object you
-    // call `.init()` on), not on the editor instance. Fall back to a UMD global
-    // if some host exposes one, then to 'unknown'.
-    const gjsVersion =
-      (grapesjs as unknown as { version?: string }).version ??
-      (globalThis as unknown as { grapesjs?: { version?: string } }).grapesjs
-        ?.version ??
-      'unknown';
+    const gjsVersion = this.grapesVersion();
 
     const modules = this.ctx.options.modules;
 
@@ -79,6 +74,7 @@ export class AboutModule implements DevtoolsModule {
         h(
           'div',
           { class: 'gjs-dt-about-links' },
+          this.link(GJS_PRODUCT, 'Plugin page'),
           this.link(REPO, 'GitHub'),
           this.link(GJS_MARKET, 'gjs.market'),
           this.link(GJS_SERVICES, 'Services'),
@@ -94,6 +90,34 @@ export class AboutModule implements DevtoolsModule {
         ),
       ),
     );
+  }
+
+  /**
+   * Resolve the GrapesJS version of the editor that is *actually running*.
+   *
+   * `version` lives on the `grapesjs` **factory** (the object you call `.init()`
+   * on), not on the editor instance — and the host may run a different factory
+   * than the one bundled with this plugin. GrapesJS Studio, for example, ships
+   * its own GrapesJS. So we pick the factory whose `editors` array contains this
+   * editor and read *its* version, rather than trusting our static import.
+   */
+  private grapesVersion(): string {
+    type Factory = { version?: unknown; editors?: unknown };
+    const staticFactory = grapesjs as unknown as Factory;
+    const globalFactory = (globalThis as unknown as { grapesjs?: Factory })
+      .grapesjs;
+    // Global first: in Studio the page global is the factory that owns the editor.
+    const candidates = [globalFactory, staticFactory].filter(
+      (f): f is Factory => !!f,
+    );
+
+    const owns = (f: Factory): boolean =>
+      Array.isArray(f.editors) && f.editors.includes(this.ctx.editor);
+
+    const owner = candidates.find((f) => owns(f) && f.version != null);
+    const version =
+      owner?.version ?? candidates.find((f) => f.version != null)?.version;
+    return version != null ? String(version) : 'unknown';
   }
 
   /** Show the first hotkey combo, rendered with ⌘ on macOS. */

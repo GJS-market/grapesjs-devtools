@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-devtools",
-  "version": "1.4.1",
+  "version": "1.4.3",
   "description": "In-editor developer panel for GrapesJS — component/style inspection, event log, REPL, AI assistant and more. Built by gjs.market for the GrapesJS community.",
   "type": "module",
   "sideEffects": [
@@ -34,8 +34,9 @@
     "README.md"
   ],
   "scripts": {
-    "dev": "vite --open",
+    "dev": "vite --config vite.config.site.ts --open",
     "build": "tsc --noEmit && vite build",
+    "build:site": "vite build --config vite.config.site.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -54,7 +55,9 @@
     "grapesjs": ">=0.21.0"
   },
   "devDependencies": {
+    "@grapesjs/studio-sdk": "^1.1.1",
     "grapesjs": "^0.21.13",
+    "grapesjs-preset-webpage": "^1.0.3",
     "typescript": "^5.6.3",
     "vite": "^5.4.11",
     "vite-plugin-dts": "^4.3.0",
