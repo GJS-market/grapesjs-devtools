@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-devtools",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "In-editor developer panel for GrapesJS — component/style inspection, event log, REPL, AI assistant and more. Built by gjs.market for the GrapesJS community.",
   "type": "module",
   "sideEffects": [

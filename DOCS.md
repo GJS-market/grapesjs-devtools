@@ -48,7 +48,7 @@ const editor = grapesjs.init({
   container: '#gjs',
   plugins: [devtools],
   pluginsOpts: {
-    'grapesjs-devtools': { enabled: true, position: 'right', theme: 'dark' },
+    'grapesjs-devtools': { enabled: true, position: 'bottom', theme: 'dark' },
   },
 });
 ```
@@ -97,7 +97,7 @@ plugin function.
 | --- | --- | --- | --- |
 | `enabled` | `boolean` | `false` | Open the panel on start. |
 | `hotkey` | `string` | `'ctrl+shift+d'` | GrapesJS keymap syntax. |
-| `position` | `'right' \| 'left' \| 'bottom'` | `'right'` | Docking side. Also switchable live from the header, and persisted. |
+| `position` | `'right' \| 'left' \| 'bottom'` | `'bottom'` | Docking side. Also switchable live from the header, and persisted. |
 | `panelWidth` | `number` | `360` | Width in px (`position: 'right' \| 'left'`). |
 | `panelHeight` | `number` | `280` | Height in px (`position: 'bottom'`). |
 | `modules` | `ModuleId[]` | all | Which modules (tabs) to enable. |

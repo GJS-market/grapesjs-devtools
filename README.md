@@ -87,7 +87,7 @@ const editor = grapesjs.init({
     'grapesjs-devtools': {
       enabled: false,          // auto-open the panel on start
       hotkey: 'ctrl+shift+d',  // toggle hotkey
-      position: 'right',       // 'right' | 'bottom'
+      position: 'bottom',      // 'right' | 'left' | 'bottom'
       panelWidth: 360,         // px, for position: 'right'
       panelHeight: 280,        // px, for position: 'bottom'
       theme: 'dark',           // 'dark' | 'light' | 'auto'
@@ -122,7 +122,7 @@ editor.stopCommand('devtools:toggle');
 | --- | --- | --- | --- |
 | `enabled` | `boolean` | `false` | Show the panel on start. |
 | `hotkey` | `string` | `'ctrl+shift+d'` | GrapesJS keymap syntax. Every `ctrl+…` combo is auto-bound to `⌘+…` as well, so it works on macOS. |
-| `position` | `'right' \| 'left' \| 'bottom'` | `'right'` | Docking side (also switchable live from the panel header, and persisted). |
+| `position` | `'right' \| 'left' \| 'bottom'` | `'bottom'` | Docking side (also switchable live from the panel header, and persisted). |
 | `panelWidth` | `number` | `360` | Width in px (`position: 'right' \| 'left'`). |
 | `panelHeight` | `number` | `280` | Height in px (`position: 'bottom'`). |
 | `modules` | `ModuleId[]` | all | Which modules to enable. |

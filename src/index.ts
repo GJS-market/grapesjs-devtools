@@ -62,7 +62,7 @@ const FACTORIES: Record<ModuleId, ModuleFactory> = {
 const DEFAULTS: ResolvedOptions = {
   enabled: false,
   hotkey: 'ctrl+shift+d',
-  position: 'right',
+  position: 'bottom',
   panelWidth: 360,
   panelHeight: 280,
   modules: ALL_MODULES,

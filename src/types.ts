@@ -56,7 +56,7 @@ export interface DevtoolsOptions {
   enabled?: boolean;
   /** Toggle hotkey in GrapesJS keymap syntax. Default: `'ctrl+shift+d'`. */
   hotkey?: string;
-  /** Docking side. Default: `'right'`. */
+  /** Docking side. Default: `'bottom'`. */
   position?: PanelPosition;
   /** Panel width in px for `position: 'right' | 'left'`. Default: `360`. */
   panelWidth?: number;
