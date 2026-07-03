@@ -1,0 +1,63 @@
+{
+  "name": "grapesjs-devtools",
+  "version": "1.4.1",
+  "description": "In-editor developer panel for GrapesJS — component/style inspection, event log, REPL, AI assistant and more. Built by gjs.market for the GrapesJS community.",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GJS-market/grapesjs-devtools.git"
+  },
+  "homepage": "https://github.com/GJS-market/grapesjs-devtools#readme",
+  "bugs": {
+    "url": "https://github.com/GJS-market/grapesjs-devtools/issues"
+  },
+  "main": "./dist/grapesjs-devtools.umd.cjs",
+  "module": "./dist/grapesjs-devtools.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/grapesjs-devtools.js",
+      "require": "./dist/grapesjs-devtools.umd.cjs"
+    },
+    "./dist/style.css": "./dist/grapesjs-devtools.css"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite --open",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "keywords": [
+    "grapesjs",
+    "grapesjs-plugin",
+    "devtools",
+    "inspector",
+    "debug",
+    "editor"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "grapesjs": ">=0.21.0"
+  },
+  "devDependencies": {
+    "grapesjs": "^0.21.13",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vite-plugin-dts": "^4.3.0",
+    "vitest": "^2.1.8"
+  }
+}
