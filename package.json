@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-devtools",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "In-editor developer panel for GrapesJS — component/style inspection, event log, REPL, AI assistant and more. Built by gjs.market for the GrapesJS community.",
   "type": "module",
   "sideEffects": [
@@ -20,13 +20,15 @@
   "main": "./dist/grapesjs-devtools.umd.cjs",
   "module": "./dist/grapesjs-devtools.js",
   "types": "./dist/index.d.ts",
+  "style": "./dist/grapesjs-devtools.css",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/grapesjs-devtools.js",
       "require": "./dist/grapesjs-devtools.umd.cjs"
     },
-    "./dist/style.css": "./dist/grapesjs-devtools.css"
+    "./style.css": "./dist/grapesjs-devtools.css",
+    "./dist/grapesjs-devtools.css": "./dist/grapesjs-devtools.css"
   },
   "files": [
     "dist",
